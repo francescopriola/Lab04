@@ -103,7 +103,7 @@ public class CorsoDAO {
 	/*
 	 * Data una matricola ed il codice insegnamento, iscrivi lo studente al corso.
 	 */
-	public boolean inscriviStudenteACorso(Studente studente, Corso corso) {
+	public void inscriviStudenteACorso(Studente studente, Corso corso) {
 		// TODO
 		String sql = "Insert into iscrizione "
 				+ "Value (?, ?)";
@@ -113,16 +113,10 @@ public class CorsoDAO {
 			PreparedStatement st = conn.prepareStatement(sql);
 			st.setInt(1, studente.getMatricola());
 			st.setString(2,  corso.getCodins());
-			int s = st.executeUpdate();
+			st.executeUpdate();
 						
 			st.close();
 			conn.close();
-			
-			if (s == 1)
-				return true;
-			
-			return false;
-			
 
 		} catch (SQLException e) {
 			e.printStackTrace();

@@ -51,10 +51,16 @@ public class FXMLController {
     void doCercaCorsi(ActionEvent event) {
     	txtText.clear();
     	String m = txtMatricola.getText();
+    	
+    	if(m.equals("")) {
+    		txtText.appendText("Inserisci una matricola!\n");
+    		return;
+    	}
+    	
     	Integer matricola = Integer.parseInt(m);
 
     	if(!studenti.containsKey(matricola)) {
-    		txtText.appendText("Inserisci una matricola valida");
+    		txtText.appendText("Inserisci una matricola valida!\n");
     		return;
     	}
     	
@@ -72,7 +78,7 @@ public class FXMLController {
     	Corso c = this.cmbCorso.getValue();
     	
     	if(c == null) {
-    		txtText.appendText("Selezionare un corso di studi. \n");
+    		txtText.appendText("Selezionare un corso di studi! \n");
     		return;
     	}
     	
@@ -86,10 +92,16 @@ public class FXMLController {
     void doIscrivi(ActionEvent event) {
     	txtText.clear();
     	String m = txtMatricola.getText();
+    	
+    	if(m.equals("")) {
+    		txtText.appendText("Inserisci una matricola!\n");
+    		return;
+    	}
+    	
     	Integer matricola = Integer.parseInt(m);
     	
     	if(!studenti.containsKey(matricola)) {
-    		txtText.appendText("Inserisci una matricola valida");
+    		txtText.appendText("Inserisci una matricola valida!\n");
     		return;
     	}
 
@@ -101,13 +113,12 @@ public class FXMLController {
     	if(cmbCorso.getValue() != null) {
     		c = cmbCorso.getValue();
     		if(corsi.contains(c)) {
-    			txtText.appendText("Studente già iscritto a questo corso.\n");
+    			txtText.appendText("Studente già iscritto a questo corso!\n");
    				return;
     		}
     		else {
-    			boolean iscritto = model.inscriviStudenteACorso(s, c);
-    			if(iscritto == true)
-    				txtText.appendText("Studente iscritto al corso.\n");
+    			model.inscriviStudenteACorso(s, c);
+    			txtText.appendText("Studente iscritto al corso!\n");
     		}
     	}
     	
@@ -116,11 +127,19 @@ public class FXMLController {
     @FXML
     void doNomeCognome(ActionEvent event) {
     	txtText.clear();
+    	txtNome.clear();
+    	txtCognome.clear();
     	String m = txtMatricola.getText();
+    	
+    	if(m.equals("")) {
+    		txtText.appendText("Inserisci una matricola!\n");
+    		return;
+    	}
+    	
     	Integer matricola = Integer.parseInt(m);
     	
     	if(!studenti.containsKey(matricola)) {
-    		txtText.appendText("Inserisci una matricola valida");
+    		txtText.appendText("Inserisci una matricola valida!\n");
     		return;
     	}
 

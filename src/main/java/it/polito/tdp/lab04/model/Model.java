@@ -35,8 +35,8 @@ public class Model {
 		return studenteDao.getNomeCognomeStudente(matricola);
 	}
 	
-	public boolean inscriviStudenteACorso(Studente studente, Corso corso) {
-		return corsoDao.inscriviStudenteACorso(studente, corso);
+	public void inscriviStudenteACorso(Studente studente, Corso corso) {
+		corsoDao.inscriviStudenteACorso(studente, corso);
 	}
 
 }
